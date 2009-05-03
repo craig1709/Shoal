@@ -2,7 +2,7 @@
 /**
  * Xcache Cache driver.
  *
- * $Id: Xcache.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Xcache.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Cache
  * @author     Kohana Team
@@ -25,9 +25,12 @@ class Cache_Xcache_Driver implements Cache_Driver {
 		return NULL;
 	}
 
-	public function set($id, $data, $tags, $lifetime)
+	public function set($id, $data, array $tags = NULL, $lifetime)
 	{
-		count($tags) and Kohana::log('error', 'Cache: tags are unsupported by the Xcache driver');
+		if ( ! empty($tags))
+		{
+			Kohana::log('error', 'Cache: tags are unsupported by the Xcache driver');
+		}
 
 		return xcache_set($id, $data, $lifetime);
 	}

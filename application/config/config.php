@@ -18,12 +18,12 @@ $config['site_protocol'] = '';
  *
  * This can be removed by using URL rewriting.
  */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /**
  * Fake file extension that will be added to all generated URLs. Example: .html
  */
-$config['url_suffix'] = '';
+$config['url_suffix'] = '/';
 
 /**
  * Length of time of the internal cache in seconds. 0 or FALSE means no caching.
@@ -94,13 +94,6 @@ $config['extension_prefix'] = 'MY_';
  */
 $config['modules'] = array
 (
-	MODPATH.'auth',      // Authentication
-	// MODPATH.'forge',     // Form generation
-	// MODPATH.'kodoc',     // Self-generating documentation
-	// MODPATH.'media',     // Media caching and compression
-	// MODPATH.'gmaps',     // Google Maps integration
+	// MODPATH.'auth',      // Authentication
 	// MODPATH.'archive',   // Archive utility
-	// MODPATH.'payment',   // Online payments
-	// MODPATH.'unit_test', // Unit testing
-	// MODPATH.'object_db', // New OOP Database library (testing only!)
 );

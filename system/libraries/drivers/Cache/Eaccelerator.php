@@ -2,7 +2,7 @@
 /**
  * Eaccelerator-based Cache driver.
  *
- * $Id: Eaccelerator.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Eaccelerator.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Cache
  * @author     Kohana Team
@@ -24,30 +24,43 @@ class Cache_Eaccelerator_Driver implements Cache_Driver {
 
 	public function find($tag)
 	{
-		return FALSE;
+		Kohana::log('error', 'tags are unsupported by the eAccelerator driver');
+
+		return array();
 	}
 
-	public function set($id, $data, $tags, $lifetime)
+	public function set($id, $data, array $tags = NULL, $lifetime)
 	{
-		count($tags) and Kohana::log('error', 'tags are unsupported by the eAccelerator driver');
+		if ( ! empty($tags))
+		{
+			Kohana::log('error', 'tags are unsupported by the eAccelerator driver');
+		}
 
 		return eaccelerator_put($id, $data, $lifetime);
 	}
 
 	public function delete($id, $tag = FALSE)
 	{
-		if ($id === TRUE)
+		if ($tag === TRUE)
+		{
+			Kohana::log('error', 'tags are unsupported by the eAccelerator driver');
+			return FALSE;
+		}
+		elseif ($id === TRUE)
+		{
 			return eaccelerator_clean();
-
-		if ($tag == FALSE)
+		}
+		else
+		{
 			return eaccelerator_rm($id);
-
-		return TRUE;
+		}
 	}
 
 	public function delete_expired()
 	{
 		eaccelerator_gc();
+
+		return TRUE;
 	}
 
 } // End Cache eAccelerator Driver

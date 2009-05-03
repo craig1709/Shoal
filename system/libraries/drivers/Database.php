@@ -2,7 +2,7 @@
 /**
  * Database API driver
  *
- * $Id: Database.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Database.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -154,7 +154,7 @@ abstract class Database_Driver {
 	 * @param   int      number of likes
 	 * @return  string
 	 */
-	public function like($field, $match = '', $auto = TRUE, $type = 'AND ', $num_likes)
+	public function like($field, $match, $auto, $type, $num_likes)
 	{
 		$prefix = ($num_likes == 0) ? '' : $type;
 
@@ -178,7 +178,7 @@ abstract class Database_Driver {
 	 * @param   int     number of likes
 	 * @return  string
 	 */
-	public function notlike($field, $match = '', $auto = TRUE, $type = 'AND ', $num_likes)
+	public function notlike($field, $match, $auto, $type, $num_likes)
 	{
 		$prefix = ($num_likes == 0) ? '' : $type;
 

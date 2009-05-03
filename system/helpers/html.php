@@ -2,7 +2,7 @@
 /**
  * HTML helper class.
  *
- * $Id: html.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: html.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -116,7 +116,7 @@ class html_Core {
 	 * @param   array   HTML anchor attributes
 	 * @return  string
 	 */
-	public static function panchor($protocol, $uri, $title = FALSE, $attributes = FALSE)
+	public static function panchor($protocol, $uri, $title = NULL, $attributes = FALSE)
 	{
 		return html::anchor($uri, $title, $attributes, $protocol);
 	}

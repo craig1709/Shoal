@@ -8,7 +8,7 @@
  * POST Data    - The name and values of any POST data submitted to the current page.
  * Cookie Data  - All cookies sent for the current request.
  *
- * $Id: Profiler.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Profiler.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Profiler
  * @author     Kohana Team
@@ -133,7 +133,8 @@ class Profiler_Core {
 		$table->add_column();
 		$table->add_column('kp-column kp-data');
 		$table->add_column('kp-column kp-data');
-		$table->add_row(array('Benchmarks', 'Time', 'Memory'), 'kp-title', 'background-color: #FFE0E0');
+		$table->add_column('kp-column kp-data');
+		$table->add_row(array('Benchmarks', 'Time', 'Count', 'Memory'), 'kp-title', 'background-color: #FFE0E0');
 
 		$benchmarks = Benchmark::get(TRUE);
 
@@ -146,7 +147,7 @@ class Profiler_Core {
 			// Clean unique id from system benchmark names
 			$name = ucwords(str_replace(array('_', '-'), ' ', str_replace(SYSTEM_BENCHMARK.'_', '', $name)));
 
-			$data = array($name, number_format($benchmark['time'], 3), number_format($benchmark['memory'] / 1024 / 1024, 2).'MB');
+			$data = array($name, number_format($benchmark['time'], 3), $benchmark['count'], number_format($benchmark['memory'] / 1024 / 1024, 2).'MB');
 			$class = text::alternate('', 'kp-altrow');
 
 			if ($name == 'Total Execution')

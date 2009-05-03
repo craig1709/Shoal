@@ -71,7 +71,7 @@ define('EXT', '.php');
 //
 // DO NOT EDIT BELOW THIS LINE, UNLESS YOU FULLY UNDERSTAND THE IMPLICATIONS.
 // ----------------------------------------------------------------------------
-// $Id: index.php 3917 2009-01-21 03:06:22Z zombor $
+// $Id: index.php 4134 2009-03-28 04:37:54Z zombor $
 //
 
 $kohana_pathinfo = pathinfo(__FILE__);

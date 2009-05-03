@@ -2,7 +2,7 @@
 /**
  * Validation helper class.
  *
- * $Id: valid.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: valid.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -203,7 +203,7 @@ class valid_Core {
 	 * @param   string   date to check
 	 * @return  boolean
 	 */
-	public function date($str)
+	public static function date($str)
 	{
 		return (strtotime($str) !== FALSE);
 	}

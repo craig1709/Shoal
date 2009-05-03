@@ -7,7 +7,7 @@
  * To use it, declare your controller to extend this class:
  * `class Your_Controller extends Template_Controller`
  *
- * $Id: template.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: template.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team

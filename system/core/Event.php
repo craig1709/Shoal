@@ -4,7 +4,7 @@
  * to be added to 'events'. Events can be run multiple times, and can also
  * process event-specific data. By default, Kohana has several system events.
  *
- * $Id: Event.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Event.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -212,10 +212,10 @@ final class Event {
 			// Do this to prevent data from getting 'stuck'
 			$clear_data = '';
 			self::$data =& $clear_data;
-
-			// The event has been run!
-			self::$has_run[$name] = $name;
 		}
+
+		// The event has been run!
+		self::$has_run[$name] = $name;
 	}
 
 	/**

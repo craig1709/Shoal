@@ -32,11 +32,11 @@ class Welcome_Controller extends Template_Controller {
 		// of data, including objects.
 		$this->template->content->links = array
 		(
-			'Main Server'	=> 'http://localhost/',
-			'Kohana'	=> 'http://kohanaphp.com/',
-			'Documentation'	=> 'http://docs.kohanaphp.com/',
-			'Forum'		=> 'http://forum.kohanaphp.com/',
-			'License'	=> 'Kohana License.html',
+			'Home Page'     => 'http://kohanaphp.com/',
+			'Documentation' => 'http://docs.kohanaphp.com/',
+			'Forum'         => 'http://forum.kohanaphp.com/',
+			'License'       => 'Kohana License.html',
+			'Donate'        => 'http://kohanaphp.com/donate.html',
 		);
 	}
 

@@ -2,7 +2,7 @@
 /**
  * MySQL Database Driver
  *
- * $Id: Mysql.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Mysql.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -22,6 +22,12 @@ class Database_Mysql_Driver extends Database_Driver {
 	protected $db_config;
 
 	/**
+	 * Performance caches.
+	 */
+	private $tables_cache;
+	private $fields_cache;
+
+	/**
 	 * Sets the config for the class.
 	 *
 	 * @param  array  database configuration
@@ -29,6 +35,8 @@ class Database_Mysql_Driver extends Database_Driver {
 	public function __construct($config)
 	{
 		$this->db_config = $config;
+		$this->tables_cache = array();
+		$this->fields_cache = array();
 
 		Kohana::log('debug', 'MySQL Database Driver Initialized');
 	}
@@ -66,7 +74,7 @@ class Database_Mysql_Driver extends Database_Driver {
 			}
 
 			// Clear password after successful connect
-			$this->config['connection']['pass'] = NULL;
+			$this->db_config['connection']['pass'] = NULL;
 
 			return $this->link;
 		}
@@ -85,6 +93,11 @@ class Database_Mysql_Driver extends Database_Driver {
 			{
 				// Set the cached object
 				self::$query_cache[$hash] = new Mysql_Result(mysql_query($sql, $this->link), $this->link, $this->db_config['object'], $sql);
+			}
+			else
+			{
+				// Rewind cached result
+				self::$query_cache[$hash]->rewind();
 			}
 
 			// Return the cached query
@@ -162,14 +175,14 @@ class Database_Mysql_Driver extends Database_Driver {
 		return $column;
 	}
 
-	public function regex($field, $match = '', $type = 'AND ', $num_regexs)
+	public function regex($field, $match, $type, $num_regexs)
 	{
 		$prefix = ($num_regexs == 0) ? '' : $type;
 
 		return $prefix.' '.$this->escape_column($field).' REGEXP \''.$this->escape_str($match).'\'';
 	}
 
-	public function notregex($field, $match = '', $type = 'AND ', $num_regexs)
+	public function notregex($field, $match, $type, $num_regexs)
 	{
 		$prefix = $num_regexs == 0 ? '' : $type;
 
@@ -262,7 +275,7 @@ class Database_Mysql_Driver extends Database_Driver {
 
 	public function list_tables(Database $db)
 	{
-		static $tables;
+		$tables =& $this->tables_cache;
 
 		if (empty($tables) AND $query = $db->query('SHOW TABLES FROM '.$this->escape_table($this->db_config['connection']['database'])))
 		{
@@ -282,7 +295,7 @@ class Database_Mysql_Driver extends Database_Driver {
 
 	public function list_fields($table)
 	{
-		static $tables;
+		$tables =& $this->fields_cache;
 
 		if (empty($tables[$table]))
 		{
@@ -327,6 +340,18 @@ class Database_Mysql_Driver extends Database_Driver {
 		}
 
 		return $columns;
+	}
+
+	/**
+	 * Clears the internal query cache.
+	 *
+	 * @param  string  SQL query
+	 */
+	public function clear_cache($sql = NULL)
+	{
+		parent::clear_cache($sql);
+		$this->tables_cache = array();
+		$this->fields_cache = array();
 	}
 
 } // End Database_Mysql_Driver Class

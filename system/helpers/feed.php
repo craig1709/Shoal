@@ -2,7 +2,7 @@
 /**
  * Feed helper class.
  *
- * $Id: feed.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: feed.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -20,6 +20,10 @@ class feed_Core {
 	 */
 	public static function parse($feed, $limit = 0)
 	{
+		// Check if SimpleXML is installed
+		if( ! function_exists('simplexml_load_file'))
+			throw new Kohana_User_Exception('Feed Error', 'SimpleXML must be installed!');
+		
 		// Make limit an integer
 		$limit = (int) $limit;
 

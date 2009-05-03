@@ -2,7 +2,7 @@
 /**
  * Validation library.
  *
- * $Id: Validation.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Validation.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Validation
  * @author     Kohana Team
@@ -108,12 +108,12 @@ class Validation_Core extends ArrayObject {
 	public function field_names()
 	{
 		// All the fields that are being validated
-		$fields = array_unique(array_merge
+		$fields = array_keys(array_merge
 		(
-			array_keys($this->pre_filters),
-			array_keys($this->rules),
-			array_keys($this->callbacks),
-			array_keys($this->post_filters)
+			$this->pre_filters,
+			$this->rules,
+			$this->callbacks,
+			$this->post_filters
 		));
 
 		// Remove wildcard fields

@@ -2,7 +2,7 @@
 /**
  * Model base class.
  *
- * $Id: Model.php 3917 2009-01-21 03:06:22Z zombor $
+ * $Id: Model.php 4134 2009-03-28 04:37:54Z zombor $
  *
  * @package    Core
  * @author     Kohana Team
@@ -12,7 +12,7 @@
 class Model_Core {
 
 	// Database object
-	protected $db;
+	protected $db = 'default';
 
 	/**
 	 * Loads the database instance, if the database is not already loaded.
@@ -24,7 +24,7 @@ class Model_Core {
 		if ( ! is_object($this->db))
 		{
 			// Load the default database
-			$this->db = Database::instance('default');
+			$this->db = Database::instance($this->db);
 		}
 	}
 

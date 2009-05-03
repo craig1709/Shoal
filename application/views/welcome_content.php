@@ -1,6 +1,5 @@
 <?php defined('SYSPATH') OR die('No direct access allowed.'); ?>
 <div class="box">
-	<p><strong>This is a vanilla installation of Kohana 2.3.1. It is not intended to be used but to be copied to new development sites.</strong></p>
 	<p>This is the default Kohana index page. You may also access this page as <code><?php echo html::anchor('welcome/index', 'welcome/index') ?></code>.</p>
 
 	<p>
