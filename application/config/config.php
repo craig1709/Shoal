@@ -94,6 +94,9 @@ $config['extension_prefix'] = 'MY_';
  */
 $config['modules'] = array
 (
+	MODPATH.'shoal/files',
+	MODPATH.'shoal/users',
+	MODPATH.'simpleauth'
 	// MODPATH.'auth',      // Authentication
 	// MODPATH.'archive',   // Archive utility
 );
