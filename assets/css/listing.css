@@ -1,0 +1,30 @@
+#alpha {
+	list-style-type: none;
+	padding: .25em;
+}
+
+#alpha li {
+	display: inline-block;
+	margin: 0;
+	text-align: center;
+	width: 3.8%;
+}
+
+#alpha a {
+	color: #000;
+	padding: .25em .5em;
+	text-decoration: none;
+}
+
+#alpha a.current, #alpha a.current:hover {
+	background-color: #1F3447;
+	color: #fff;
+}
+
+#alpha a:hover {
+	text-decoration: underline;
+}
+
+#listing {
+	list-style-type: square;
+}

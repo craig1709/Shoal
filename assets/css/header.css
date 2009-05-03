@@ -1,0 +1,16 @@
+#header {
+	background-color: #6D8EAD;
+	color: #fff;
+}
+
+#user-box {
+	position: absolute;
+	top: 0;
+	right: .25em;
+}
+
+#user-box a {
+	color: #fff;
+	font-size: .8em;
+	text-decoration: none;
+}

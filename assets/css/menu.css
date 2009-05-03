@@ -1,0 +1,27 @@
+#menu {
+	background-color: #6D8EAD;
+	border-bottom: .25em solid #1F3447;
+	list-style-type: none;
+	margin: 0;
+	padding: .25em 1em;
+}
+
+#menu li {
+	display: inline;
+	margin: 0 1em 0 0;
+}
+
+#menu a {
+	color: #fff;
+	padding: .25em .5em;
+	text-decoration: none;
+}
+
+#menu a.current, #menu a.current:hover {
+	background-color: #1F3447;
+	color: #fff;
+}
+
+#menu a:hover {
+	color: #1F3447;
+}

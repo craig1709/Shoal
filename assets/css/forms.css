@@ -1,0 +1,10 @@
+label {
+	display: block;
+	float: left;
+	width: 8em;
+}
+
+form p.error {
+	color: #f00;
+	font-style: italic;
+}
